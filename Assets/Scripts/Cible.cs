@@ -14,7 +14,9 @@ public class Cible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Marteau"))
+        if (gameManager == null) return;
+        Rigidbody rb = other.attachedRigidbody;
+        if (rb != null && other.CompareTag("Marteau"))
         {
             gameManager.CibleFrappee(this);
         }
