@@ -17,6 +17,12 @@ public class SpawnManager : MonoBehaviour
     private float prochainSpawn;
     private bool actif;
 
+    void Start()
+    {
+        if (gameManager == null)
+            gameManager = FindFirstObjectByType<GameManager>();
+    }
+
     public void Demarrer()
     {
         actif = true;

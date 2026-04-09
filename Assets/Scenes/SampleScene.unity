@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   prefabCible: {fileID: 3661421549930909701, guid: 11f654031d3f7e84981b6eaa9bf8d0ce, type: 3}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 795574865}
   zoneMin: {x: -1, y: 0.8, z: -0.5}
   zoneMax: {x: 1, y: 1.8, z: 0.5}
   intervalleSpawn: 1.5
@@ -2313,6 +2313,10 @@ PrefabInstance:
     - target: {fileID: 3661421549930909701, guid: 11f654031d3f7e84981b6eaa9bf8d0ce, type: 3}
       propertyPath: m_Name
       value: Cible
+      objectReference: {fileID: 0}
+    - target: {fileID: 6254652921749642518, guid: 11f654031d3f7e84981b6eaa9bf8d0ce, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8038750388516279126, guid: 11f654031d3f7e84981b6eaa9bf8d0ce, type: 3}
       propertyPath: m_LocalPosition.x
