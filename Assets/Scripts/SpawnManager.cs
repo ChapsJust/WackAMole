@@ -88,7 +88,7 @@ public class SpawnManager : MonoBehaviour
         Vector3 position = centre + offset;
 
         GameObject go = Instantiate(prefabCible, position, Quaternion.identity);
-        go.tag = "Cible";
+        go.tag = Tags.Cible;
 
         // Orienter la cible vers le joueur
         Vector3 dirVersJoueur = new Vector3(centre.x - position.x, 0f, centre.z - position.z);

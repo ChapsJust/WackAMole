@@ -58,7 +58,7 @@ public class FeedbackMarteau : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Cible"))
+        if (other.CompareTag(Tags.Cible))
         {
             interacteurActif?.SendHapticImpulse(amplitudeFrappe, dureeFrappe);
 

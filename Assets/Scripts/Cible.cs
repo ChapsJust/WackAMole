@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Cible : MonoBehaviour
 {
@@ -28,7 +27,7 @@ public class Cible : MonoBehaviour
     {
         if (gameManager == null) return;
         Rigidbody rb = other.attachedRigidbody;
-        if (rb != null && other.CompareTag("Marteau"))
+        if (rb != null && other.CompareTag(Tags.Marteau))
         {
             gameManager.CibleFrappee(this);
         }
