@@ -18,6 +18,14 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float delaiDisparition = 3f;
     [SerializeField] private int maxCiblesActives = 3;
 
+    [SerializeField] private float intervalleSpawnFinal = 0.5f;
+    [SerializeField] private float delaiDisparitionFinal = 1.5f;
+    [SerializeField] private int maxCiblesActivesFinal = 5;
+
+    private float intervalleActuel;
+    private float delaiActuel;
+    private int maxActuel;
+
     private float prochainSpawn;
     private bool actif;
     private List<Cible> ciblesActives = new List<Cible>();
@@ -34,6 +42,16 @@ public class SpawnManager : MonoBehaviour
     {
         actif = true;
         prochainSpawn = Time.time;
+        intervalleActuel = intervalleSpawn;
+        delaiActuel = delaiDisparition;
+        maxActuel = maxCiblesActives;
+    }
+
+    public void MettreAJourDifficulte(float progression)
+    {
+        intervalleActuel = Mathf.Lerp(intervalleSpawn, intervalleSpawnFinal, progression);
+        delaiActuel = Mathf.Lerp(delaiDisparition, delaiDisparitionFinal, progression);
+        maxActuel = maxCiblesActives + Mathf.RoundToInt(Mathf.Lerp(maxCiblesActives, maxCiblesActivesFinal, progression));
     }
 
     public void Arreter()
@@ -48,10 +66,10 @@ public class SpawnManager : MonoBehaviour
     {
         if (!actif) return;
         if (Time.time < prochainSpawn) return;
-        if (ciblesActives.Count >= maxCiblesActives) return;
+        if (ciblesActives.Count >= maxActuel) return;
 
         SpawnerCible();
-        prochainSpawn = Time.time + intervalleSpawn;
+        prochainSpawn = Time.time + intervalleActuel;
     }
 
     /// <summary>
@@ -97,6 +115,6 @@ public class SpawnManager : MonoBehaviour
 
         Cible cible = go.GetComponent<Cible>();
         ciblesActives.Add(cible);
-        cible.Initialiser(gameManager, this, delaiDisparition);
+        cible.Initialiser(gameManager, this, delaiActuel);
     }
 }

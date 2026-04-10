@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     private EtatJeu etatActuel;
     private int score;
     private float tempsRestant;
+    private int phaseActuelle;
 
     void Start()
     {
@@ -38,10 +39,13 @@ public class GameManager : MonoBehaviour
         tempsRestant -= Time.deltaTime;
         AfficherTimer();
 
+        float progression = 1f - Math.Clamp01(tempsRestant / dureePartie);
+        spawnManager.MettreAJourDifficulte(progression);
         if (tempsRestant <= 0f)
         {
             TerminerJeu();
         }
+
     }
 
     /// <summary>
@@ -63,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         tempsRestant = dureePartie;
+        phaseActuelle = 0;
         MettreAJourScore();
         AfficherTimer();
         spawnManager.Demarrer();
@@ -99,5 +104,12 @@ public class GameManager : MonoBehaviour
     {
         int secondes = Mathf.Max(0, Mathf.FloorToInt(tempsRestant));
         texteTimer.text = $"Temps : {secondes}s";
+    }
+
+    private void MettreAJourPhase(float progression)
+    {
+        int nouvellePhase = progression < 0.33f ? 1 : progression < 0.66f ? 2 : 3;
+        if (nouvellePhase == phaseActuelle) return;
+        phaseActuelle = nouvellePhase;
     }
 }
