@@ -1789,8 +1789,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   prefabCible: {fileID: 3661421549930909701, guid: 11f654031d3f7e84981b6eaa9bf8d0ce, type: 3}
   gameManager: {fileID: 795574865}
-  zoneMin: {x: -1, y: 0.8, z: -0.5}
-  zoneMax: {x: 1, y: 1.8, z: 0.5}
+  joueur: {fileID: 0}
+  rayonMin: 1.2
+  rayonMax: 2
+  hauteurRelMin: -0.5
+  hauteurRelMax: 0.3
   intervalleSpawn: 1.5
   delaiDisparition: 3
   maxCiblesActives: 3
@@ -2310,6 +2313,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 791130651813581278, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 791130651813581278, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2839932588828024100, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.06
@@ -2353,6 +2364,14 @@ PrefabInstance:
     - target: {fileID: 4700508164535293135, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
       propertyPath: m_Name
       value: Marteau
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537595960450876986, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
+      propertyPath: m_MovementType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537595960450876986, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
+      propertyPath: m_UseDynamicAttach
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
