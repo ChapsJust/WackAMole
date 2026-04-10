@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         if (etatActuel != EtatJeu.EnJeu) return;
         score += 10;
         MettreAJourScore();
-        cible.Disparaitre();
+        cible.Frapper();
     }
 
     private void TerminerJeu()
