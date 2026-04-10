@@ -80,10 +80,7 @@ public class GameManager : MonoBehaviour
     private void TerminerJeu()
     {
         spawnManager.Arreter();
-        foreach (GameObject c in GameObject.FindGameObjectsWithTag("Cible"))
-        {
-            Destroy(c);
-        }
+        spawnManager.DetruireToutesCibles();
         texteScoreFinal.text = $"Score final : {score}";
         ChangerEtat(EtatJeu.GameOver);
     }

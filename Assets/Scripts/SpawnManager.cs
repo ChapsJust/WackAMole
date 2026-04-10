@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class SpawnManager : MonoBehaviour
 
     private float prochainSpawn;
     private bool actif;
+    private List<Cible> ciblesActives = new List<Cible>();
 
     void Start()
     {
@@ -46,12 +48,30 @@ public class SpawnManager : MonoBehaviour
     {
         if (!actif) return;
         if (Time.time < prochainSpawn) return;
-
-        int ciblesActuelles = GameObject.FindGameObjectsWithTag("Cible").Length;
-        if (ciblesActuelles >= maxCiblesActives) return;
+        if (ciblesActives.Count >= maxCiblesActives) return;
 
         SpawnerCible();
         prochainSpawn = Time.time + intervalleSpawn;
+    }
+
+    /// <summary>
+    /// Permet de retirer une cible de la liste des cibles actives.
+    /// </summary>
+    /// <param name="cible">La cible à retirer.</param>
+    public void CibleDetruite(Cible cible)
+    {
+        ciblesActives.Remove(cible);
+    }
+
+    /// <summary>
+    /// Permet de faire disparaître toutes les cibles actives, puis vide la liste des cibles actives.
+    /// </summary>
+    public void DetruireToutesCibles()
+    {
+        List<Cible> copie = new List<Cible>(ciblesActives);
+        foreach (Cible cible in copie)
+            cible.Disparaitre();
+        ciblesActives.Clear();
     }
 
     /// <summary>
@@ -75,6 +95,8 @@ public class SpawnManager : MonoBehaviour
         if (dirVersJoueur != Vector3.zero)
             go.transform.rotation = Quaternion.LookRotation(dirVersJoueur);
 
-        go.GetComponent<Cible>().Initialiser(gameManager, delaiDisparition);
+        Cible cible = go.GetComponent<Cible>();
+        ciblesActives.Add(cible);
+        cible.Initialiser(gameManager, this, delaiDisparition);
     }
 }

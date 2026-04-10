@@ -5,12 +5,15 @@ using UnityEngine.AI;
 public class Cible : MonoBehaviour
 {
     private GameManager gameManager;
+    private SpawnManager spawnManager;
     private float delaiDisparition = 3f;
     private Coroutine disparitionCoroutine;
+    private bool detruite;
 
-    public void Initialiser(GameManager gm, float delai)
+    public void Initialiser(GameManager gm, SpawnManager sm, float delai)
     {
         gameManager = gm;
+        spawnManager = sm;
         delaiDisparition = delai;
         disparitionCoroutine = StartCoroutine(AttendrePuisDisparaitre());
     }
@@ -81,10 +84,14 @@ public class Cible : MonoBehaviour
     /// </summary>
     public void Disparaitre()
     {
+        if (detruite) return;
+        detruite = true;
         if (disparitionCoroutine != null)
         {
             StopCoroutine(disparitionCoroutine);
+            disparitionCoroutine = null;
         }
+        spawnManager?.CibleDetruite(this);
         Destroy(gameObject);
     }
 }
