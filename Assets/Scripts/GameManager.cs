@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         tempsRestant -= Time.deltaTime;
         AfficherTimer();
 
-        float progression = 1f - Math.Clamp01(tempsRestant / dureePartie);
+        float progression = 1f - Mathf.Clamp01(tempsRestant / dureePartie);
         spawnManager.MettreAJourDifficulte(progression);
         if (tempsRestant <= 0f)
         {
