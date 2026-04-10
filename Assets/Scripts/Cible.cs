@@ -39,6 +39,7 @@ public class Cible : MonoBehaviour
     /// </summary>
     public void Frapper()
     {
+        if (detruite) return;
         if (disparitionCoroutine != null)
         {
             StopCoroutine(disparitionCoroutine);
