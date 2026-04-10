@@ -4,6 +4,12 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 [RequireComponent(typeof(XRGrabInteractable))]
+
+/// <summary>
+/// Ce script gère les retours haptique et audio du marteau. Lorsque le marteau est saisi, un retour haptique de faible amplitude est envoyé. 
+/// Lorsqu'il entre en collision avec une cible, un retour haptique plus fort est envoyé et un son de frappe est joué.
+/// Aide de ChatGPT pour faire les retours haptiques et audio du marteau
+/// </summary>
 public class FeedbackMarteau : MonoBehaviour
 {
     [Header("Haptique - Grab")]

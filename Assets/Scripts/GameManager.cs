@@ -44,6 +44,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Change l'état du jeu et active/désactive les canvas correspondants.
+    /// Menu : Affiche le menu principal, masque le HUD et l'écran de game over.
+    /// EnJeu : Affiche le HUD, masque le menu principal et l'écran de game over.
+    /// GameOver : Affiche l'écran de game over, masque le menu principal et le HUD.
+    /// </summary>
+    /// <param name="nouvelEtat"></param>
     public void ChangerEtat(EtatJeu nouvelEtat)
     {
         etatActuel = nouvelEtat;
