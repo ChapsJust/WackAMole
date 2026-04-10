@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     private void AfficherTimer()
     {
-        int secondes = Mathf.Max(0, Mathf.CeilToInt(tempsRestant));
+        int secondes = Mathf.Max(0, Mathf.FloorToInt(tempsRestant));
         texteTimer.text = $"Temps : {secondes}s";
     }
 }

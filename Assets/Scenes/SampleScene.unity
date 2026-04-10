@@ -2365,6 +2365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Marteau
       objectReference: {fileID: 0}
+    - target: {fileID: 4908127370407529818, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8537595960450876986, guid: 58d53d1196dc03c4a91a09dbd691e208, type: 3}
       propertyPath: m_MovementType
       value: 0
